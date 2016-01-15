@@ -1,24 +1,33 @@
-
+// Graphs can be undirected,
+// which means that the relationship of
+// any 2 nodes connected by an edge is a symmetrical relationship
 
 // ###Graph Solution
 
 // Instantiate a new graph
 var Graph = function(){
+  // this = Object.create(Graph.prototype)
+
+  // return this;
 };
 
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node){
+  this[node] = node;
 };
 
 // ------------------------
-// Return a boolean value indicating if the value passed to contains is represented in the graph.
+// Return a boolean value indicating if the value
+// passed to contains is represented in the graph.
 Graph.prototype.contains = function(node){
+  return node in this;
 };
 
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node){
+  delete this[node];
 };
 
 // ------------------------

@@ -136,9 +136,11 @@ define([
 
       it('allows sequentially adding and removing items', function() {
         queue.enqueue('a');
-        expect(queue.dequeue()).to.equal('a');
+        var first = queue.dequeue();
+        expect(first).to.equal('a');
         queue.enqueue('b');
-        expect(queue.dequeue()).to.equal('b');
+        var second = queue.dequeue();
+        expect(second).to.equal('b');
       });
 
     });
@@ -153,9 +155,11 @@ define([
       it('removes the oldest item, after newer items have already been added and removed', function() {
         queue.enqueue('a');
         queue.enqueue('b');
-        queue.dequeue();
+        var first = queue.dequeue();
         queue.enqueue('c');
-        expect(queue.dequeue()).to.equal('b');
+        var second = queue.dequeue();
+
+        expect(second).to.equal('b');
       });
     });
 
