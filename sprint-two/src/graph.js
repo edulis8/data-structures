@@ -7,7 +7,7 @@
 // Instantiate a new graph
 var Graph = function(){
   // this = Object.create(Graph.prototype)
-  this.edges = [];
+
   // return this;
 };
 
@@ -48,12 +48,22 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
-Graph.prototype.removeEdge = function(fromNode, toNode){
+Graph.prototype.removeEdge = function(fromNode, toNode) {
+  var fromIndex = this[fromNode].edges.indexOf(toNode);
+  this[fromNode].edges.splice(fromIndex, 1);
+
+  var toIndex = this[toNode].edges.indexOf(fromNode);
+  this[toNode].edges.splice(fromIndex, 1);
+
 };
 
 // ------------------------
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb){
+  _.each(this, function(node, index, collection){
+    var value = node.value;
+    cb(value);
+  });
 };
 
 /*

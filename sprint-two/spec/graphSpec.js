@@ -47,9 +47,11 @@ describe('graph', function() {
   });
 
   it('should execute a callback on each node in the graph', function() {
+
     var connectToSatsumas = function(item) {
       graph.addEdge(item, 'satsumas');
     };
+
     graph.addNode('satsumas');
     graph.addNode('puppies');
     graph.addNode('kittens');
@@ -59,5 +61,16 @@ describe('graph', function() {
     expect(graph.hasEdge('kittens', 'satsumas')).to.equal(true);
     expect(graph.hasEdge('penguins', 'satsumas')).to.equal(true);
     expect(graph.hasEdge('satsumas', 'satsumas')).to.equal(true);
+  });
+
+  it('testing stuff', function() {
+    graph.addNode('apples');
+    graph.addNode('satsumas');
+    graph.addEdge('satsumas', 'apples');
+    graph.addNode('puppies');
+    graph.addNode('kittens');
+    graph.addNode('penguins');
+    graph.addEdge('penguins', 'puppies');
+    expect('eric').to.equal('eric');
   });
 });
