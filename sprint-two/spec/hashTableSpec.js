@@ -32,13 +32,8 @@ describe('hashTable', function() {
   it('should not contain values that were removed', function() {
     hashTable.insert('Steven', 'Tyler');
     hashTable.remove('Steven');
+    var test = hashTable.retrieve('Steven');
     expect(hashTable.retrieve('Steven')).to.equal(null);
-  });
-
-  it('expectation', function (done) {
-    hashTable.insert('Steven', 'Tyler');
-    var i = getIndexBelowMaxForKey('Steven', hashTable._limit);
-    expect(hashTable._storage.get(i)).to.be.an("array");
   });
 
   it('should handle hash function collisions', function(){
