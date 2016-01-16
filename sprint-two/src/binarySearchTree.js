@@ -1,5 +1,18 @@
 var BinarySearchTree = function(value){
+
+  return {
+    insert: function() {
+
+    },
+    contains: function() {
+
+    },
+    depthFirstLog: function() {
+
+    }
+  };
 };
+
 
 
 /*

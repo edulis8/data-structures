@@ -48,6 +48,10 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should not delete an entire bucket', function() {
+    expect(true).to.equal(false);
+  });
+
   // (Extra credit! Remove the extra "x" when you want the following tests to run)
   xit('should double in size when needed', function() {
     _.each(people, function(person) {
