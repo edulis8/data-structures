@@ -7,12 +7,25 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.set(i, v);
+  if (this._storage.get(i)) {
+    var nestedArray = this._storage.get(i);
+    nestedArray.push([k, v]);
+  } else {
+    this._storage.set(i, [[k, v]]);
+  }
 };
+
+// [     k          v         k       v
+//   [['Steven', 'Tyler'], ['Bob', 'Jones']],   < -- Bucket
+//   [],
+//   [],
+//   ...
+// ]
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(i);
+  var keyValueArray = this._storage.get(i)[0];
+  return keyValueArray[1];
 };
 
 HashTable.prototype.remove = function(k){
