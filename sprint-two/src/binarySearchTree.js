@@ -33,16 +33,18 @@ var BinarySearchTree = function(value){
     depthFirstLog: function(iterator) {
       iterator(this.value);
       if (this.left) {
-        this.left.depthFirstLog(iterator)
+        this.left.depthFirstLog(iterator);
       }
       if (this.right) {
-        this.right.depthFirstLog(iterator)
+        this.right.depthFirstLog(iterator);
       }
     }
   };
 };
 
-
 /*
  * Complexity: What is the time complexity of the above functions?
+ * insert: Logarithmic
+ * contains: Quadratic
+ * depthFirstLog: Quadratic
  */
